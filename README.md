@@ -1,0 +1,2 @@
+# Export-to-excel-from-webgrid-in-mvc5-with-razor-view-and-entity
+In this article I am going to discuss how to export data from WebGrid to Excel Sheet. Sometimes you may required to provide data export functionality from WebGrid to Excel file in ASP.NET MVC 5. In this article I am going to discuss how to achive such functionality with all necessary steps. http://www.techstrikers.com/Articles/export-to-excel-from-webgrid-in-mvc5-with-razor-view-and-entity-framework6.php
