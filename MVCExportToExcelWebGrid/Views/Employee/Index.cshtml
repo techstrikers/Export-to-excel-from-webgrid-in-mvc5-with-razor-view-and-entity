@@ -1,0 +1,82 @@
+﻿@model IEnumerable<MVCDisplayWebGrid.Models.Employee>
+
+<style type="text/css">
+    .webgrid-table {
+        font-family: Arial,Helvetica,sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        width: 650px;
+        display: table;
+        border-collapse: collapse;
+        border: solid 1px #C5C5C5;
+        background-color: white;
+    }
+
+        .webgrid-table td, th {
+            border: 1px solid #C5C5C5;
+            padding: 3px 7px 2px;
+        }
+
+    .webgrid-header, .webgrid-header a {
+        background-color: #0094ff;
+        color:#ffffff;
+        text-align: left;
+        text-decoration: none;
+    }
+
+    .webgrid-footer {
+    }
+
+    .webgrid-row-style {
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-alternating-row {
+        background-color:azure;
+        padding: 3px 7px 2px;
+    }
+
+    .col1Width {
+        width: 55px;
+    }
+
+    .col2Width {
+        width: 220px;
+    }
+</style>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Export WebGrid Data To Excel</h2>
+
+@{
+    ViewBag.Title = "Index";
+    var grid = new WebGrid(source: Model, canPage: true, rowsPerPage: 10);
+    grid.Pager(WebGridPagerModes.All);
+}
+
+<div id="gridContent" style="font-family: Arial; padding: 20px;">
+    @grid.GetHtml(tableStyle: "webgrid-table",
+    headerStyle: "webgrid-header",
+    footerStyle: "webgrid-footer",
+    alternatingRowStyle: "webgrid-alternating-row",
+    selectedRowStyle: "webgrid-selected-row",
+    rowStyle: "webgrid-row-style",
+    columns: grid.Columns(
+                grid.Column(columnName: "Name", header: "Name"),
+                grid.Column(columnName: "Designation", header: "Designation"),
+                grid.Column(columnName: "Gender", header: "Gender"),
+                grid.Column(columnName: "Salary", header: "Salary"),
+                grid.Column(columnName: "City", header: "City"),
+                grid.Column(columnName: "State", header: "State"),
+                grid.Column(columnName: "Zip", header: "Zip")
+
+    ))
+    <p></p>
+    Export to Excel : @Html.ActionLink("Export", "ExportData", "Employee")
+</div>
+
+
